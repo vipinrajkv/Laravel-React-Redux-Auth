@@ -16,7 +16,7 @@ export default function RouterLayout() {
 
   return (
     <Routes>
-      <Route element={<UserHeader />}>
+      <Route element={<UserHeader isLoggedIn = {isLoggedIn} />}>
         <Route path="/" element={<><LeftNav /><List /></>} />
         <Route path='/product/create' element={<><LeftNav /><Create /></>}></Route>
         <Route path='/products/:id/edit' element={<><LeftNav /><Edit /></>}></Route>
