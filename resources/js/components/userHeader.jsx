@@ -7,7 +7,7 @@ export default function UserHeader() {
 	const tokenData =  useSelector(state => state.auth.token) ?? token ;
 	const userName =  useSelector(state => state.auth.user_name) ?? '';
 	const navigate = useNavigate();
-	useEffect(() => {
+	useEffect(() => {     // This useEffect is not being used for anything
     }, [tokenData]);
 
 	if (!tokenData) {
