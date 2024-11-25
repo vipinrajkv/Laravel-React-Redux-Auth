@@ -8,10 +8,15 @@ import DefaultHeader from "../components/header";
 import LeftNav from '../components/leftNav'
 import RegisterForm from '../components/registerForm'
 import UserHeader from '../components/userHeader'
+import { useSelector } from 'react-redux'
 export default function RouterLayout() {
+
+
+  const isLoggedIn =  useSelector(state => state.auth.token); //placed here to trigger rerender the page when token is found in local storage
+
   return (
     <Routes>
-      <Route element={<UserHeader />}>
+      <Route element={<UserHeader isLoggedIn = {isLoggedIn} />}>
         <Route path="/" element={<><LeftNav /><List /></>} />
         <Route path='/product/create' element={<><LeftNav /><Create /></>}></Route>
         <Route path='/products/:id/edit' element={<><LeftNav /><Edit /></>}></Route>

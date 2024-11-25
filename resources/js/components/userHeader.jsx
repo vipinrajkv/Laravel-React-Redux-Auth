@@ -3,14 +3,15 @@ import {Navigate, Outlet, useNavigate } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import axiosInstance from '../axiosInstance'
 const token = localStorage.getItem('token');
-export default function UserHeader() {
-	const tokenData =  useSelector(state => state.auth.token) ?? token ;
+export default function UserHeader({isLoggedIn}) {
+	// const tokenData =  useSelector(state => state.auth.token) ?? token ;
 	const userName =  useSelector(state => state.auth.user_name) ?? '';
 	const navigate = useNavigate();
-	useEffect(() => {
-    }, [tokenData]);
 
-	if (!tokenData) {
+	// useEffect(() => {     // This useEffect is not being used for anything, shall be removed
+    // }, [tokenData]);
+
+	if (!isLoggedIn) {
 		return <Navigate to='/login'/>
 	}
 

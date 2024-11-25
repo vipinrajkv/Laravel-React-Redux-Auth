@@ -9,14 +9,15 @@ export const loginUser = createAsyncThunk('user/loginUser',async (userLoginData)
     }
 );
 
-const token = localStorage.getItem('token') ?? null;
+// const token = localStorage.getItem('token') ?? null;  removed the line
 // const userToken = JSON.parse(localStorage.getItem('token'));
+
 const authSlice = createSlice({
     name:'auth',
     initialState:{
          isLoggedIn : null ,
          user_name : null ,
-         token : token
+         token : localStorage.getItem('token') ?? null, // Directly accessed in initialState
         
         },
     extraReducers:(builder)=> {
