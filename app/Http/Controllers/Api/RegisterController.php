@@ -72,6 +72,7 @@ class RegisterController extends Controller
             ]);
 
             if($validateUser->fails()){
+                //create common trait to handle error and success response
                 return response()->json([
                     'status' => false,
                     'message' => 'validation error',
@@ -86,7 +87,7 @@ class RegisterController extends Controller
                 ], 401);
             }
 
-            $user = User::where('email', $request->email)->first();
+            $user = auth()->user;
         
             return response()->json([
                 'status' => true,
